@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { createUserController } from "../controllers/users.controller";
 import { validateBody } from "../middlewares/validateBody.middleware";
 import { userCreateSchema } from "../schemas/users.schema";
 import { verifyEmail } from "../middlewares/verifyEmail.middleware";
+import {
+  createUserController,
+  readUsersController,
+} from "../controllers/users.controller";
 
 export const usersRoutes: Router = Router();
 
@@ -12,3 +15,5 @@ usersRoutes.post(
   verifyEmail,
   createUserController
 );
+
+usersRoutes.get("/", readUsersController);
