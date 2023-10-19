@@ -12,8 +12,8 @@ export const verifyEmail = async (
 
   if (!email) return next();
 
-  const query: string = `SELECT * FROM "users" WHERE "email" = $1;`;
-  const queryResult: TUserResult = await client.query(query, [email]);
+  const queryString: string = `SELECT * FROM "users" WHERE "email" = $1;`;
+  const queryResult: TUserResult = await client.query(queryString, [email]);
 
   if (queryResult.rowCount) {
     throw new AppError("Email already registered", 409);
