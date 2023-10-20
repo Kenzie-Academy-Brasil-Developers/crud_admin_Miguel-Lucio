@@ -1,7 +1,11 @@
 import { Request, Response } from "express";
 import { TUserCreate } from "../__tests__/mocks/interfaces";
 import { TUserRead, TUserReturn } from "../interfaces/users.interface";
-import { createUserService, readUsersService } from "../services/users.service";
+import {
+  createUserService,
+  readUserCoursesService,
+  readUsersService,
+} from "../services/users.service";
 
 export const createUserController = async (
   req: Request,
@@ -20,4 +24,14 @@ export const readUsersController = async (
   const users: TUserRead = await readUsersService();
 
   return res.status(200).json(users);
+};
+
+export const readUserCoursesController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const { id } = req.params;
+  const userCourses = await readUserCoursesService(id);
+
+  return res.status(200).json(userCourses);
 };
