@@ -6,6 +6,8 @@ import {
   createUserController,
   readUsersController,
 } from "../controllers/users.controller";
+import { verifyToken } from "../middlewares/verifyToken.middleware";
+import { verifyPermissions } from "../middlewares/verifyPermissions.middleware";
 
 export const usersRoutes: Router = Router();
 
@@ -16,4 +18,4 @@ usersRoutes.post(
   createUserController
 );
 
-usersRoutes.get("/", readUsersController);
+usersRoutes.get("/", verifyToken, verifyPermissions, readUsersController);
