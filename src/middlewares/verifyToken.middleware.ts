@@ -15,9 +15,12 @@ export const verifyToken = (
 
   const token: string = authorization.split(" ")[1];
 
-  const decoded = verify(token, process.env.SECRET_KEY!);
+  try {
+    const decoded = verify(token, process.env.SECRET_KEY!);
+    res.locals = { ...res.locals, decoded };
 
-  res.locals = { ...res.locals, decoded };
-
-  return next();
+    return next();
+  } catch (error) {
+    throw new AppError("Missing bearer token", 401);
+  }
 };
