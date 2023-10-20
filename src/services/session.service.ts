@@ -29,8 +29,8 @@ export const loginService = async (
 
   const token: string = sign(
     { email: user.email, admin: user.admin },
-    process.env.JWT_SECRET!,
-    { subject: user.id.toString(), expiresIn: process.env.JWT_EXPIRES_IN! }
+    process.env.SECRET_KEY!,
+    { subject: user.id.toString(), expiresIn: process.env.EXPIRES_IN! }
   );
 
   return { token };
