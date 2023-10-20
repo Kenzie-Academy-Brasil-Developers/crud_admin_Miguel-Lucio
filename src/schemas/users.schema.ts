@@ -8,6 +8,15 @@ export const userSchema = z.object({
   admin: z.boolean().default(false),
 });
 
+export const userCoursesSchema = z.object({
+  couseId: z.number().positive(),
+  courseName: z.string().max(15),
+  courseDescription: z.string(),
+  userActiveInCourse: z.boolean(),
+  userId: z.number().positive(),
+  userName: z.string().max(50),
+});
+
 export const userCreateSchema = userSchema.omit({ id: true });
 export const userUpdateSchema = userCreateSchema.partial();
 export const userReturnSchema = userSchema.omit({ password: true });
