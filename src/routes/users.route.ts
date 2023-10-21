@@ -19,7 +19,6 @@ usersRoutes.post(
   verifyEmail,
   createUserController
 );
-
 usersRoutes.get("/", verifyToken, verifyPermissions, readUsersController);
 
 usersRoutes.get(

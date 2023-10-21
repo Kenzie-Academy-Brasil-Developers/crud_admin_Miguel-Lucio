@@ -1,7 +1,7 @@
 import format from "pg-format";
-import { TUserCreate } from "../__tests__/mocks/interfaces";
 import {
   TUserCoursesResult,
+  TUserCreate,
   TUserRead,
   TUserResult,
   TUserReturn,
