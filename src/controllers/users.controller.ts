@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
-import { TUserCreate } from "../__tests__/mocks/interfaces";
-import { TUserRead, TUserReturn } from "../interfaces/users.interface";
+import {
+  TUserCreate,
+  TUserRead,
+  TUserReturn,
+} from "../interfaces/users.interface";
 import {
   createUserService,
   readUserCoursesService,
